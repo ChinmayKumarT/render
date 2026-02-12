@@ -35,3 +35,11 @@ def predict(data: CustomerData):
         "churn_probability": float(prediction),
         "risk_level": "High" if prediction > 0.5 else "Low"
     }
+
+@app.get("/")
+def health():
+    return {"status": "Customer Churn API running"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
