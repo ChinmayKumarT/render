@@ -144,3 +144,17 @@ This project demonstrates not only machine learning modeling but also:
 * Explainable AI integration
 * Business-focused decision making
 
+
+
+POST /predict
+
+{
+  "tenure": 12,
+  "MonthlyCharges": 70.35,
+  ...
+}
+
+{
+  "churn_probability": 0.82,
+  "risk_level": "High"
+}

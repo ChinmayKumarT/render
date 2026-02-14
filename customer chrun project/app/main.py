@@ -35,3 +35,21 @@ def predict(data: CustomerData):
         "churn_probability": float(prediction),
         "risk_level": "High" if prediction > 0.5 else "Low"
     }
+
+@app.get("/")
+def health():
+    return {"status": "Customer Churn API running"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
