@@ -2,72 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Customer Churn Prediction</title>
+    <title>Customer Churn AI</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
+<div class="background"></div>
 
-    <h1>Customer Churn Prediction</h1>
+<div class="main-card">
 
-    <form id="predictionForm">
+    <div class="header">
+        <h1>Customer Churn Prediction</h1>
+        <p>AI-powered churn risk analysis</p>
+    </div>
 
-        <!-- Gender -->
-        <label for="gender">Gender</label>
-        <select id="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
+    <form id="predictionForm" class="form-grid">
+
+    <!-- Gender Radio -->
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="Male" checked> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+            </div>
+        </div>
 
         <!-- Senior Citizen -->
-        <label for="SeniorCitizen">Senior Citizen</label>
-        <select id="SeniorCitizen" required>
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </select>
+        <div class="form-group">
+            <label>Senior Citizen</label>
+            <div class="radio-group">
+                <label><input type="radio" name="SeniorCitizen" value="0" checked> No</label>
+                <label><input type="radio" name="SeniorCitizen" value="1"> Yes</label>
+            </div>
+        </div>
 
-        <!-- Tenure -->
-        <label for="tenure">Tenure (Months)</label>
-        <input type="number" id="tenure" min="0" required>
+        <!-- Tenure Slider -->
+        <div class="form-group">
+            <label>Tenure (Months): <span id="tenureValue">12</span></label>
+            <input type="range" id="tenure" min="0" max="72" value="12">
+        </div>
 
-        <!-- Monthly Charges -->
-        <label for="MonthlyCharges">Monthly Charges</label>
-        <input type="number" step="0.01" id="MonthlyCharges" required>
+        <!-- Monthly Charges Slider -->
+        <div class="form-group">
+            <label>Monthly Charges: ₹<span id="monthlyValue">50</span></label>
+            <input type="range" id="MonthlyCharges" min="0" max="200" value="50">
+        </div>
 
-        <!-- Total Charges -->
-        <label for="TotalCharges">Total Charges</label>
-        <input type="number" step="0.01" id="TotalCharges" required>
+        <!-- Total Charges Slider -->
+        <div class="form-group">
+            <label>Total Charges: ₹<span id="totalValue">500</span></label>
+            <input type="range" id="TotalCharges" min="0" max="10000" value="500">
+        </div>
 
-        <!-- Contract -->
-        <label for="Contract">Contract Type</label>
-        <select id="Contract" required>
-            <option value="Month-to-month">Month-to-month</option>
-            <option value="One year">One year</option>
-            <option value="Two year">Two year</option>
-        </select>
+        <!-- Contract Type -->
+        <div class="form-group">
+            <label>Contract Type</label>
+            <div class="radio-group vertical">
+                <label><input type="radio" name="Contract" value="Month-to-month" checked> Month-to-month</label>
+                <label><input type="radio" name="Contract" value="One year"> One year</label>
+                <label><input type="radio" name="Contract" value="Two year"> Two year</label>
+            </div>
+        </div>
 
         <!-- Internet Service -->
-        <label for="InternetService">Internet Service</label>
-        <select id="InternetService" required>
-            <option value="DSL">DSL</option>
-            <option value="Fiber optic">Fiber optic</option>
-            <option value="No">No</option>
-        </select>
+        <div class="form-group">
+            <label>Internet Service</label>
+            <div class="radio-group vertical">
+                <label><input type="radio" name="InternetService" value="DSL" checked> DSL</label>
+                <label><input type="radio" name="InternetService" value="Fiber optic"> Fiber optic</label>
+                <label><input type="radio" name="InternetService" value="No"> No</label>
+            </div>
+        </div>
 
-        <button type="submit">Predict</button>
+        <button type="submit" class="predict-btn">Predict Risk</button>
 
     </form>
 
-    <!-- Result Section -->
-    <div class="result-box">
-        <h2 id="result"></h2>
+
+    <div class="result-card">
+        <h2 id="result">Prediction Result</h2>
+        <div class="probability-bar">
+            <div id="progress"></div>
+        </div>
         <p id="probability"></p>
     </div>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
